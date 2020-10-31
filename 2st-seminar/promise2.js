@@ -5,7 +5,7 @@ const middleSchool = () => new Promise((resolve,reject)=>{
     },1000)
 })
 
-const highSchool = school => new Promise((resolve, reject)=>{
+const highSchool = school => new Promise((resolve, rejcet)=>{
     if(자퇴){
         setTimeout(()=>{
             reject(new Error('에러!'))
