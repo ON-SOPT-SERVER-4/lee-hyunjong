@@ -59,6 +59,32 @@ router.delete('/:idx', (req, res) => {
 });
 /** idx값으로 특정 멤버 정보 수정 */
 router.put('/:idx', (req, res) => {
-
+    const {name,age,part} = req.body;
+    const {idx} = req.params; 
+    
+    if(!idx){
+        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST,responseMessage.NULL_VALUE));
+    }
+    if(!name|!age|!part){
+        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST,responseMessage.NULL_VALUE));
+    }
+    const member = membersDB.filter(member => member.idx == idx)
+    if(member.length === 0){
+        return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST,responseMessage.NO_USER));
+    }
+    // membersDB[idx]={
+    //     idx:Number.parseInt(idx),
+    //     name,
+    //     part,
+    //     age
+    // }
+    membersDB[idx]={
+        idx:Number.parseInt(idx),
+        name,
+        age,
+        part
+    }
+    console.log(membersDB)
+    return res.status(statusCode.OK).send(util.success(statusCode.OK,responseMessage.MEMBER_UPDATE_SUCCESS,membersDB));
 });
 module.exports = router;
