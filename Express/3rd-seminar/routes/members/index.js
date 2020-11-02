@@ -72,12 +72,6 @@ router.put('/:idx', (req, res) => {
     if(member.length === 0){
         return res.status(statusCode.BAD_REQUEST).send(util.fail(statusCode.BAD_REQUEST,responseMessage.NO_USER));
     }
-    // membersDB[idx]={
-    //     idx:Number.parseInt(idx),
-    //     name,
-    //     part,
-    //     age
-    // }
     membersDB[idx]={
         idx:Number.parseInt(idx),
         name,
