@@ -35,11 +35,7 @@ router.get('/', async (req, res) => {
     }
 })
 
-router.get('/:id', async (req, res) => {
-    const {id} = req.params;
-    const user = await validateId(id,read,res)
-    return res.status(statusCode.OK).send(util.success(statusCode.OK,responseMessage.MEMBER_READ_SUCCESS,user))
-})
+router.get('/:id', userController.finduser)
 
 router.post('/update/:id',async(req,res)=>{
     const {id} = req.params;

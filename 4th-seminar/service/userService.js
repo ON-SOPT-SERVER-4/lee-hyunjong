@@ -1,4 +1,4 @@
-const {User} = require('../models')
+const {User,Post} = require('../models')
 const crypto = require('crypto')
 
 module.exports={
@@ -12,7 +12,6 @@ module.exports={
             console.log(alreadyEmail)
             return alreadyEmail;
         }catch(error){
-            console.log('1!!!!!!!!!')
             throw error
         }
     },
@@ -29,6 +28,24 @@ module.exports={
             return user
         }catch(error){
             throw error
+        }
+    },
+    userInfo:async(id)=>{
+        try{
+            const user = await User.findOne({
+                where:{
+                    id:id
+                },
+                attributes:{exclude:['password','salt']},
+                include:[{
+                    model:Post
+                }]
+            })
+            console.log('idcehck에서 user', user)
+            return user.dataValues
+        }catch(err){
+            console.error(err)
+            throw err
         }
     }
 }
