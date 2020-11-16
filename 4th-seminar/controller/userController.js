@@ -26,6 +26,7 @@ module.exports={
                 userName
             }));
         } catch (error) {
+            console.log('2!!!!!!!!!!!!!')
             console.error(error);
             return res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, responseMessage.SIGN_UP_FAIL));
         }

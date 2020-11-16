@@ -2,8 +2,7 @@ module.exports = (sequelize, DataTypes) => {
     return sequelize.define('User', {
         //모델의 Attributes (Column)을 정의하는곳
         email: {
-            type: DataTypes.STRING(30),
-            unique: true,
+            type: DataTypes.STRING(50),
             allowNull: false,
         },
         userName: {

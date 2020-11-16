@@ -12,6 +12,7 @@ module.exports={
             console.log(alreadyEmail)
             return alreadyEmail;
         }catch(error){
+            console.log('1!!!!!!!!!')
             throw error
         }
     },
